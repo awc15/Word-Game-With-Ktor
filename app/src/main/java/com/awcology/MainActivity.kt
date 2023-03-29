@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import com.awcology.databinding.ActivityMainBinding
+import com.awcology.extensions.disableDarkTheme
 import com.google.android.gms.ads.AdRequest
 import com.google.android.gms.ads.MobileAds
 
@@ -18,9 +19,12 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
+        disableDarkTheme()
         init()
+        setupClickListeners()
+    }
 
+    private fun setupClickListeners() {
         mainBinding?.let {
             setContentView(it.root)
 
@@ -44,7 +48,7 @@ class MainActivity : AppCompatActivity() {
             }
 
             it.cvMedium.setOnClickListener {
-              // showMaintenanceDialog()
+                // showMaintenanceDialog()
                 startActivity(
                     Intent(mContext, FillTheWordActivity::class.java)
                         .putExtra(
@@ -63,7 +67,7 @@ class MainActivity : AppCompatActivity() {
             }
 
             it.cvHard.setOnClickListener {
-               // showMaintenanceDialog()
+                // showMaintenanceDialog()
                 startActivity(
                     Intent(mContext, FillTheWordActivity::class.java)
                         .putExtra(
@@ -90,7 +94,7 @@ class MainActivity : AppCompatActivity() {
         initializeAndLoadAd()
     }
 
-    private fun showMaintenanceDialog(){
+    private fun showMaintenanceDialog() {
         AlertDialog.Builder(mContext)
             .setTitle("INFORMATION")
             .setMessage(

@@ -4,25 +4,25 @@
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <androidx.cardview.widget.CardView
+    <com.google.android.material.card.MaterialCardView
         android:layout_marginEnd="5dp"
         android:id="@+id/cv_letter"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:cardCornerRadius="10dp"
+        app:cardCornerRadius="5dp"
+        android:backgroundTint="@color/light_skin"
         android:elevation="20dp">
         <TextView
             android:id="@+id/tv_letter"
             android:layout_width="40dp"
             android:layout_height="40dp"
-            android:textColor="@color/purple_700"
+            android:textColor="@color/black"
             android:textAlignment="center"
             android:text="A"
             android:textAllCaps="true"
             android:gravity="center_horizontal|center_vertical"
             android:layout_gravity="center_horizontal|center_vertical"
-            android:fontFamily="sans-serif-condensed"
-            android:background="@drawable/gradient_drawable"
+            android:fontFamily="sans-serif-black"
             android:textSize="20sp"/>
-    </androidx.cardview.widget.CardView>
+    </com.google.android.material.card.MaterialCardView>
 </LinearLayout>

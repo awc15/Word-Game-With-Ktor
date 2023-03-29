@@ -12,6 +12,8 @@ import android.view.View.VISIBLE
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.awcology.databinding.ActivityFillTheWordBinding
+import com.awcology.extensions.disableDarkTheme
+import com.google.android.gms.ads.AdError
 import com.google.android.gms.ads.AdRequest
 import com.google.android.gms.ads.FullScreenContentCallback
 import com.google.android.gms.ads.LoadAdError
@@ -39,7 +41,7 @@ class FillTheWordActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
+        disableDarkTheme()
         init()
 
         binding?.let { view ->
@@ -48,9 +50,7 @@ class FillTheWordActivity : AppCompatActivity() {
             view.ivInfo.setOnClickListener {
                 showAlertDialog(
                     "Information",
-                    "We won't be showing you the guessed letter's exact place because we want " +
-                            "you to figure out the word and then guess the letters. So you won't be getting" +
-                            " any help from us."
+                    "Guess the HIDDEN WORD by tapping the LETTERS shown at the bottom"
                 ) {
 
                 }
@@ -194,7 +194,9 @@ class FillTheWordActivity : AppCompatActivity() {
                 .map(source::get)
                 .joinToString("")
 
-            suggestionString = suggestionString.plus(character)
+            if (!suggestionString.contains(character)) {
+                suggestionString = suggestionString.plus(character)
+            }
         }
 
 
@@ -290,22 +292,33 @@ class FillTheWordActivity : AppCompatActivity() {
     }
 
     private fun showFullScreenAd() {
-        mInterstitialAd?.show(this)
-        mInterstitialAd?.fullScreenContentCallback =
-            object : FullScreenContentCallback() {
-                override fun onAdDismissedFullScreenContent() {
-                    super.onAdDismissedFullScreenContent()
-                    mInterstitialAd = null
-                    finish()
-                }
+        if (mInterstitialAd != null) {
+            mInterstitialAd?.show(this)
+            mInterstitialAd?.fullScreenContentCallback =
+                object : FullScreenContentCallback() {
 
-                override fun onAdImpression() {
-                    super.onAdImpression()
-                    mInterstitialAd = null
-                    finish()
+                    override fun onAdDismissedFullScreenContent() {
+                        super.onAdDismissedFullScreenContent()
+                        mInterstitialAd = null
+                        finish()
+                    }
 
+                    override fun onAdFailedToShowFullScreenContent(p0: AdError) {
+                        super.onAdFailedToShowFullScreenContent(p0)
+                        finish()
+                    }
+
+                    override fun onAdImpression() {
+                        super.onAdImpression()
+                        mInterstitialAd = null
+                        finish()
+
+                    }
                 }
-            }
+        } else {
+            finish()
+        }
+
     }
 
     private fun initializeAndLoadAd() {
@@ -315,7 +328,7 @@ class FillTheWordActivity : AppCompatActivity() {
 
         InterstitialAd.load(
             this,
-            "ca-app-pub-4450055239439820/5205922815",
+            getString(R.string.ADMOB_INTERSTITIAL_AD_ID),
             adRequest,
             object : InterstitialAdLoadCallback() {
                 override fun onAdFailedToLoad(adError: LoadAdError) {

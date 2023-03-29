@@ -4,101 +4,104 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity"
-    android:background="@color/purple_500">
+    android:background="@color/blueberry"
+    tools:context=".MainActivity">
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cv_logo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:cardElevation="50dp"
         android:layout_marginTop="50dp"
         app:cardCornerRadius="50dp"
-        app:layout_constraintStart_toStartOf="parent"
+        app:cardElevation="50dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
+
         <ImageView
-            android:layout_gravity="center_vertical|center_horizontal"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:src="@drawable/icon_fill_the_word"/>
+            android:layout_gravity="center_vertical|center_horizontal"
+            android:src="@drawable/icon_fill_the_word" />
     </androidx.cardview.widget.CardView>
-
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cv_easy"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="50dp"
-        android:layout_marginEnd="50dp"
-        app:cardElevation="50dp"
-        app:cardCornerRadius="20dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="100dp"
+        android:layout_marginEnd="50dp"
+        app:cardCornerRadius="20dp"
+        app:cardElevation="50dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/cv_logo">
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:textSize="20sp"
-            android:textColor="@color/black"
-            android:text="EASY"
             android:padding="10dp"
-            android:textAlignment="center"/>
+            android:text="EASY"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="20sp" />
     </androidx.cardview.widget.CardView>
+
     <androidx.cardview.widget.CardView
         android:id="@+id/cv_medium"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="50dp"
-        android:layout_marginEnd="50dp"
-        app:cardElevation="50dp"
-        app:cardCornerRadius="20dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="30dp"
+        android:layout_marginEnd="50dp"
+        app:cardCornerRadius="20dp"
+        app:cardElevation="50dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/cv_easy">
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:textSize="20sp"
-            android:text="MEDIUM"
-            android:textColor="@color/black"
             android:padding="10dp"
-            android:textAlignment="center"/>
+            android:text="MEDIUM"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="20sp" />
     </androidx.cardview.widget.CardView>
+
     <androidx.cardview.widget.CardView
         android:id="@+id/cv_hard"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="50dp"
-        android:layout_marginEnd="50dp"
-        app:cardElevation="50dp"
-        app:cardCornerRadius="20dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="30dp"
+        android:layout_marginEnd="50dp"
+        app:cardCornerRadius="20dp"
+        app:cardElevation="50dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/cv_medium">
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:textSize="20sp"
-            android:text="HARD"
-            android:textColor="@color/black"
             android:padding="10dp"
-            android:textAlignment="center"/>
+            android:text="HARD"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="20sp" />
     </androidx.cardview.widget.CardView>
 
-    <com.google.android.gms.ads.AdView
-        xmlns:ads="http://schemas.android.com/apk/res-auto"
+    <com.google.android.gms.ads.AdView xmlns:ads="http://schemas.android.com/apk/res-auto"
         android:id="@+id/adView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         ads:adSize="BANNER"
-        ads:adUnitId="@string/ADMOB_AD_ID"
-        ads:layout_constraintStart_toStartOf="parent"
+        ads:adUnitId="@string/ADMOB_BANNER_AD_ID"
+        ads:layout_constraintBottom_toBottomOf="parent"
         ads:layout_constraintEnd_toEndOf="parent"
-        ads:layout_constraintBottom_toBottomOf="parent">
-    </com.google.android.gms.ads.AdView>
+        ads:layout_constraintStart_toStartOf="parent"></com.google.android.gms.ads.AdView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
